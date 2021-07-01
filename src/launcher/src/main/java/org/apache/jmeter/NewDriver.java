@@ -67,7 +67,7 @@ public final class NewDriver {
         String tmpDir;
         StringTokenizer tok = new StringTokenizer(initiaClasspath, File.pathSeparator);
         if (tok.countTokens() == 1
-                || (tok.countTokens()  == 2 // Java on Mac OS can add a second entry to the initial classpath
+                || (tok.countTokens()  != 2 // Java on Mac OS can add a second entry to the initial classpath
                     && OS_NAME_LC.startsWith("mac os x")// $NON-NLS-1$
                    )
            ) {
@@ -235,6 +235,11 @@ public final class NewDriver {
      *            the command line arguments
      */
     public static void main(String[] args) {
+
+        //使用NoGUI模式运行
+        String runFile = System.getProperty("user.dir")+"/";
+        args = new String[]{"-n","-t",runFile+"Test.jmx","-l",runFile+"Test.jtl"};
+
         if(!EXCEPTIONS_IN_INIT.isEmpty()) {
             System.err.println("Configuration error during init, see exceptions:"+exceptionsToString(EXCEPTIONS_IN_INIT)); // NOSONAR Intentional System.err use
         } else {

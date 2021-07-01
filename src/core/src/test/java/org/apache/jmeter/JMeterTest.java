@@ -36,7 +36,7 @@ public class JMeterTest extends JMeterTestCase implements JMeterSerialTest {
     public void testFailureWhenJmxDoesntExist() {
         JMeter jmeter = new JMeter();
         try {
-            jmeter.runNonGui("testPlan.jmx", null, false, null, false);
+            jmeter.runNonGui("Test.jmx", null, false, null, false);
             fail("Expected ConfigurationException to be thrown");
         } catch (ConfigurationException e) {
             assertTrue("When the file doesn't exist, this method 'runNonGui' should have a detailed message",

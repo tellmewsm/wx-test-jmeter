@@ -56,6 +56,14 @@ public class TestValueReplacer extends JMeterTestCase {
     }
 
     @Test
+    public void testJMeterVariables(){
+
+        System.out.println(JMeterContextService.getContext().getVariables().get("server"));
+        ValueReplacer replacer = new ValueReplacer(variables);
+        assertTrue(replacer.containsKey("server"));
+    }
+
+    @Test
     public void testReverseReplacement() throws Exception {
         ValueReplacer replacer = new ValueReplacer(variables);
         assertTrue(variables.getUserDefinedVariables().containsKey("server"));
